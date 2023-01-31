@@ -1,0 +1,73 @@
+<% include('../layouts/header.ejs') %> 
+<script>
+   function validateName() {
+  let name = document.getElementById("name")
+  let nameWarning = document.getElementsById("nameWarning")
+
+  let check = /^([a-zA-Z]+) ?([a-zA-Z]+)? ?([a-zA-Z]+)?$/
+
+  if(!name.value.match(check)) {
+    nameWarning.innerHTML = "Name is not in correct format!"
+  } else {
+    nameWarning.innerHTML = ""
+  }
+  
+  
+}
+
+function validateNumber() {
+  let number = document.getElementById("number")
+  let numberWarning = document.getElementById("numberWarning")
+
+  let check = /^\d{10}$/
+
+  if(!number.value.match(check)) {
+    numberWarning.innerHTML = "Number is not in correct format!"
+  } else {
+    numberWarning.innerHTML = ""
+  }
+
+  
+}
+
+function validateEmail() {
+  let email = document.getElementsByClassName("email")
+  let emailWarning = document.getElementsByClassName("emailWarning")
+
+  let check = /^([0-9A-Za-z\.\_]+)@([a-zA-Z]+).([a-zA-Z]+)$/
+
+  if(!email.value.match(check)) {
+    emailWarning.innerHTML = "Email is not in correct format!"
+  } else {
+    emailWarning.innerHTML = ""
+  }
+
+  
+}
+</script>
+<h1>User Registration Form</h1>
+
+<form action="" method="post" enctype="multipart/form-data">
+    <input type="text" name="name" placeholder="Enter Name" required>
+    <br><br>
+    <input type="email" name="email" placeholder="Enter Email" required>
+    <br><br>
+    <input type="text" name="mno" placeholder="Enter Mobile Number" required on>
+    <br><br>
+    <input type="file" name="image" required>
+    <br><br>
+    <input type="password" name="password" placeholder="Enter Password" required>
+    <br><br>
+    <input type="submit" value="Register">
+</form>
+<p style="color: rgb(113, 176, 18);"> 
+    <% 
+        if(typeof message !== 'undefined') {
+    %>
+    <%= message %>
+    <%
+        }
+     %> 
+</p>
+
+<% include('../layouts/footer.ejs') %> 
